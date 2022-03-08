@@ -66,7 +66,7 @@ async def start(bot, cmd):
                     f_caption = f"{files.file_name}"
                 buttons = [
                     [                
-                        InlineKeyboardButton('CHANNEL ⭕️', url='https://t.me/+XrXE3qJbZRM1MWJl')
+                        InlineKeyboardButton('💥 CHANNEL 💥', url='https://t.me/+XrXE3qJbZRM1MWJl')
                     ],[
                         InlineKeyboardButton("SEARCH AGAIN 🔍", switch_inline_query_current_chat='')
                     ]
@@ -101,7 +101,7 @@ async def start(bot, cmd):
                 [
                     [
                         InlineKeyboardButton("GROUP ⚡️", url="https://t.me/free_graphics_download"),
-                        InlineKeyboardButton("ABOUT ✏️", callback_data="about")
+                        InlineKeyboardButton("HELP 🔧", callback_data="help")
                     ],
                     [
                         InlineKeyboardButton("SEARCH HERE 🔍", switch_inline_query_current_chat='')
@@ -167,13 +167,13 @@ async def bot_info(bot, message):
     buttons = [
         [
             InlineKeyboardButton("GROUP ⚡️", url="https://t.me/free_graphics_download"),
-            InlineKeyboardButton("ABOUT ✏️", callback_data="about")
+            InlineKeyboardButton("HELP 🔧", callback_data="help")
         ],
         [
             InlineKeyboardButton("SEARCH HERE 🔍", switch_inline_query_current_chat='')
         ]
         ]
-    await message.reply(text="<b>╭━━━━━━━━━━━━━━━➣</b>\n<b>┣⪼ 𝙼𝚈 𝙽𝙰𝙼𝙴 ›› <a href='https://t.me/Search010Bot'>𝙼𝚂 𝙱𝙾𝚃</a></b>\n<b>┣⪼ 𝙲𝚁𝙴𝙰𝚃𝙾𝚁 ›› <a href='https://t.me/Aadhi011/'>ꪖꪖᦔꫝỉ </a></b>\n<b>┣⪼ 𝚂𝙾𝚄𝚁𝙲𝙴 𝙲𝙾𝙳𝙴 ›› <a href='https://github.com/Aadhi000/Movies-Search-Bot-MW'>𝙼𝚂-𝙱𝙾𝚃</a></b>\n<b>┣⪼ 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴 ›› 𝙼𝙾𝙽𝙶𝙾 𝙳𝙱</b>\n<b>┣⪼ 𝙻𝙸𝙱𝚁𝙰𝚁𝚈 ›› 𝙿𝚈𝚁𝙾𝙶𝚁𝙰𝙼</b>\n<b>┣⪼ 𝙻𝙰𝙽𝙶𝚄𝙰𝙶𝙴 ›› 𝙿𝚈𝚃𝙷𝙾𝙽</b>\n<b>╰━━━━━━━━━━━━━━━➣</b>", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
+    await message.reply(text=START_MSG, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
         
 
 @Client.on_message(filters.command('delete') & filters.user(ADMINS))
@@ -207,19 +207,58 @@ async def delete(bot, message):
 async def bot_info(bot, message):
     buttons = [
         [
-            InlineKeyboardButton('♥️ CHAИИΞL ♥️', url='https://t.me/+veUIdIW2CQ5mOGU5')          
+            InlineKeyboardButton('CHANNEL ⚡️', url='https://t.me/pencemodesigns')          
         ],[
-            InlineKeyboardButton('🚶 𝗕𝗮𝗰𝗸 🚶', callback_data='start')
+            InlineKeyboardButton('BACK 🔙', callback_data='help')
         ]
         ]
-    await message.reply(text="<b>╭━━━━━━━━━━━━━━━➣</b>\n<b>┣⪼ 𝙼𝚈 𝙽𝙰𝙼𝙴 ›› <a href='https://t.me/Search010Bot'>𝙼𝚂 𝙱𝙾𝚃</a></b>\n<b>┣⪼ 𝙲𝚁𝙴𝙰𝚃𝙾𝚁 ›› <a href='https://t.me/Aadhi011/'>ꪖꪖᦔꫝỉ </a></b>\n<b>┣⪼ 𝚂𝙾𝚄𝚁𝙲𝙴 𝙲𝙾𝙳𝙴 ›› <a href='https://github.com/Aadhi000/Movies-Search-Bot-MW'>𝙼𝚂-𝙱𝙾𝚃</a></b>\n<b>┣⪼ 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴 ›› 𝙼𝙾𝙽𝙶𝙾 𝙳𝙱</b>\n<b>┣⪼ 𝙻𝙸𝙱𝚁𝙰𝚁𝚈 ›› 𝙿𝚈𝚁𝙾𝙶𝚁𝙰𝙼</b>\n<b>┣⪼ 𝙻𝙰𝙽𝙶𝚄𝙰𝙶𝙴 ›› 𝙿𝚈𝚃𝙷𝙾𝙽</b>\n<b>╰━━━━━━━━━━━━━━━➣</b>", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
+    await message.reply(text="""<b>About us 📝</b>
+    
+<b>🎯 Owner</b> : <b><i><a href="https://t.me/mnmsby">α̅η̲ɗɾo͚ȋɗ കുഞ്ഞപ്പൻ</a></i></b>
+<b>🎯 Group</b> : <i><a href="https://t.me/pencemodesign">Pencemo design </a></i>
+<b>🎯 Channel</b> : <i><a href="https://t.me/pencemodesigns">Pencemo designs </a></i>
+<b>🎯 Youtube</b> : <i><a href="http://youtube.com/c/pencemodesigns">Click Me</a></i>
+""", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
 
 @Client.on_message(filters.command('help'))
 async def bot_info(bot, message):
     buttons = [
         [
-            InlineKeyboardButton('♥️ CHAИИΞL ♥️', url='https://t.me/+veUIdIW2CQ5mOGU5')          
+            InlineKeyboardButton("SEARCH HERE 🔍", switch_inline_query_current_chat=''),
+            InlineKeyboardButton("ABOUT ✏️", callback_data="about")        
         ],[
-            InlineKeyboardButton('🚶 𝗕𝗮𝗰𝗸 🚶', callback_data='start')
+            InlineKeyboardButton('BACK 🔙', callback_data='start')
         ]
         ]
+    await message.reply(text="""<b>⭕️ How to search here 🔍</b>
+
+<b>🔘 With tag</b>
+Ex (banner, poster, template etc... )
+
+<b>🔘 With exact file name</b>
+Only files from freepik, Envato elements, Vecteezy
+
+<b>🔘 With file ID</b>
+Without any tag
+
+⭕️ <b>Available Commands :</b>
+
+/start : Checking bot online 
+/help : For more help
+/about : more about me
+/search : search files
+
+©️ @pencemodesigns
+""", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
+
+@Client.on_message(filters.command('search'))
+async def bot_info(bot, message):
+    buttons = [
+        [
+            InlineKeyboardButton("SEARCH HERE 🔍", switch_inline_query_current_chat='')          
+        ],[
+            InlineKeyboardButton('JOIN HERE ⚡️', url='https://t.me/pencemodesigns')
+        ]
+        ]
+    await message.reply(text="""For searching files please click button below 👇, or send file name or ID here 
+""", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
