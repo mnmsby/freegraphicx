@@ -27,14 +27,14 @@ async def start(bot, cmd):
                 ident, file_id = cmd.text.split("_-_-_-_")
                 await bot.send_message(
                     chat_id=cmd.from_user.id,
-                    text="**Please Join My Updates Channel to use this Bot!**",
+                    text="**Please Join My Updates Channel to use me!**",
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
-                                InlineKeyboardButton("♥️ JOIИ CHAИИΞL ♥️", url=invite_link.invite_link)
+                                InlineKeyboardButton("🔥 JOIN CHANNEL 🔥", url=invite_link.invite_link)
                             ],
                             [
-                                InlineKeyboardButton("♻️ ϮᏒY ΛGΛIИ ♻️", callback_data=f"checksub#{file_id}")
+                                InlineKeyboardButton("TRY AGAIN ⏳", callback_data=f"checksub#{file_id}")
                             ]
                         ]
                     ),
@@ -44,7 +44,7 @@ async def start(bot, cmd):
             except Exception:
                 await bot.send_message(
                     chat_id=cmd.from_user.id,
-                    text="Something went Wrong.",
+                    text="Something went Wrong ⚠️.",
                     parse_mode="markdown",
                     disable_web_page_preview=True
                 )
@@ -66,9 +66,9 @@ async def start(bot, cmd):
                     f_caption = f"{files.file_name}"
                 buttons = [
                     [                
-                        InlineKeyboardButton('♥️ CHAИИΞL ♥️', url='https://t.me/+veUIdIW2CQ5mOGU5')
+                        InlineKeyboardButton('CHANNEL ⭕️', url='https://t.me/+XrXE3qJbZRM1MWJl')
                     ],[
-                        InlineKeyboardButton('🚶 𝗕𝗮𝗰𝗸 🚶', callback_data='start')
+                        InlineKeyboardButton("SEARCH AGAIN 🔍", switch_inline_query_current_chat='')
                     ]
                     ]
                 await bot.send_cached_media(
@@ -87,7 +87,7 @@ async def start(bot, cmd):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("♥️ JOIИ CHAИИΞL ♥️", url=invite_link.invite_link)
+                        InlineKeyboardButton(" JOIN HERE ", url=invite_link.invite_link)
                     ]
                 ]
             )
@@ -100,11 +100,11 @@ async def start(bot, cmd):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("♥️ CHAИИΞL ♥️", url="https://t.me/+veUIdIW2CQ5mOGU5"),
-                        InlineKeyboardButton("⚡ ΛBOUT ⚡", callback_data="about")
+                        InlineKeyboardButton("GROUP ⚡️", url="https://t.me/free_graphics_download"),
+                        InlineKeyboardButton("ABOUT ✏️", callback_data="about")
                     ],
                     [
-                        InlineKeyboardButton("♻️ SΞARCH HΞRΞ ♻️", switch_inline_query_current_chat='')
+                        InlineKeyboardButton("SEARCH HERE 🔍", switch_inline_query_current_chat='')
                     ]
                 ]
             )
@@ -166,11 +166,11 @@ async def log_file(bot, message):
 async def bot_info(bot, message):
     buttons = [
         [
-            InlineKeyboardButton("♥️ CHAИИΞL ♥️", url="https://t.me/+veUIdIW2CQ5mOGU5"),
-            InlineKeyboardButton("⚡ ΛBOUT ⚡", callback_data="about")
+            InlineKeyboardButton("GROUP ⚡️", url="https://t.me/free_graphics_download"),
+            InlineKeyboardButton("ABOUT ✏️", callback_data="about")
         ],
         [
-            InlineKeyboardButton("♻️ SΞARCH HΞRΞ ♻️", switch_inline_query_current_chat='')
+            InlineKeyboardButton("SEARCH HERE 🔍", switch_inline_query_current_chat='')
         ]
         ]
     await message.reply(text="<b>╭━━━━━━━━━━━━━━━➣</b>\n<b>┣⪼ 𝙼𝚈 𝙽𝙰𝙼𝙴 ›› <a href='https://t.me/Search010Bot'>𝙼𝚂 𝙱𝙾𝚃</a></b>\n<b>┣⪼ 𝙲𝚁𝙴𝙰𝚃𝙾𝚁 ›› <a href='https://t.me/Aadhi011/'>ꪖꪖᦔꫝỉ </a></b>\n<b>┣⪼ 𝚂𝙾𝚄𝚁𝙲𝙴 𝙲𝙾𝙳𝙴 ›› <a href='https://github.com/Aadhi000/Movies-Search-Bot-MW'>𝙼𝚂-𝙱𝙾𝚃</a></b>\n<b>┣⪼ 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴 ›› 𝙼𝙾𝙽𝙶𝙾 𝙳𝙱</b>\n<b>┣⪼ 𝙻𝙸𝙱𝚁𝙰𝚁𝚈 ›› 𝙿𝚈𝚁𝙾𝙶𝚁𝙰𝙼</b>\n<b>┣⪼ 𝙻𝙰𝙽𝙶𝚄𝙰𝙶𝙴 ›› 𝙿𝚈𝚃𝙷𝙾𝙽</b>\n<b>╰━━━━━━━━━━━━━━━➣</b>", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
