@@ -1,4 +1,4 @@
-#Kanged From @TroJanZheX
+
 from info import AUTH_CHANNEL, AUTH_USERS, CUSTOM_FILE_CAPTION, API_KEY, AUTH_GROUPS, BUTTON
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram import Client, filters
@@ -83,10 +83,10 @@ async def filter(client, message):
             if API_KEY:
                 poster=await get_poster(search)
             if poster:
-                await message.reply_photo(photo=poster, caption=f"<b>Here is The Results For Your Search 👉 {search}</b>", reply_markup=InlineKeyboardMarkup(buttons))
+                await message.reply_photo(photo=poster, caption=f"<b>Here is The Results For Your Search 👉 : {search}</b>", reply_markup=InlineKeyboardMarkup(buttons))
 
             else:
-                await message.reply_text(f"<b>Here is The Results For Your Search 👉 {search}</b>", reply_markup=InlineKeyboardMarkup(buttons))
+                await message.reply_text(f"<b>Here is The Results For Your Search 👉 : {search}</b>", reply_markup=InlineKeyboardMarkup(buttons))
             return
 
         data = BUTTONS[keyword]
@@ -104,9 +104,9 @@ async def filter(client, message):
         if API_KEY:
             poster=await get_poster(search)
         if poster:
-            await message.reply_photo(photo=poster, caption=f"<b>Here is The Results For Your Search 👉 {search}</b>", reply_markup=InlineKeyboardMarkup(buttons))
+            await message.reply_photo(photo=poster, caption=f"<b>Here is The Results For Your Search 👉 : {search}</b>", reply_markup=InlineKeyboardMarkup(buttons))
         else:
-            await message.reply_text(f"<b>Here is The Results For Your Search 👉 {search}</b>", reply_markup=InlineKeyboardMarkup(buttons))
+            await message.reply_text(f"<b>Here is The Results For Your Search 👉 : {search}</b>", reply_markup=InlineKeyboardMarkup(buttons))
 
 @Client.on_message(filters.text & filters.group & filters.incoming & filters.chat(AUTH_GROUPS) if AUTH_GROUPS else filters.text & filters.group & filters.incoming)
 async def group(client, message):
@@ -151,9 +151,9 @@ async def group(client, message):
             if API_KEY:
                 poster=await get_poster(search)
             if poster:
-                await message.reply_photo(photo=poster, caption=f"<b>Here is The Results For Your Search 👉 {search}</b>", reply_markup=InlineKeyboardMarkup(buttons))
+                await message.reply_photo(photo=poster, caption=f"<b>Here is The Results For Your Search 👉 : {search}</b>", reply_markup=InlineKeyboardMarkup(buttons))
             else:
-                await message.reply_text(f"<b>Here is The Results For Your Search 👉 {search}</b>", reply_markup=InlineKeyboardMarkup(buttons))
+                await message.reply_text(f"<b>Here is The Results For Your Search 👉 : {search}</b>", reply_markup=InlineKeyboardMarkup(buttons))
             return
 
         data = BUTTONS[keyword]
@@ -171,9 +171,9 @@ async def group(client, message):
         if API_KEY:
             poster=await get_poster(search)
         if poster:
-            await message.reply_photo(photo=poster, caption=f"<b>Here is The Results For Your Search 👉 {search}</b>", reply_markup=InlineKeyboardMarkup(buttons))
+            await message.reply_photo(photo=poster, caption=f"<b>Here is The Results For Your Search 👉 : {search}</b>", reply_markup=InlineKeyboardMarkup(buttons))
         else:
-            await message.reply_text(f"<b>Here is The Results For Your Search 👉 {search}</b>", reply_markup=InlineKeyboardMarkup(buttons))
+            await message.reply_text(f"<b>Here is The Results For Your Search 👉 : {search}</b>", reply_markup=InlineKeyboardMarkup(buttons))
 
     
 def get_size(size):
@@ -318,9 +318,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     f_caption = f"{files.file_name}"
                 buttons = [
                 [                
-                    InlineKeyboardButton('𝙼𝚆 𝚄𝙿𝙳𝙰𝚃𝙴𝚂', url='https://t.me/+veUIdIW2CQ5mOGU5')              
+                    InlineKeyboardButton('CHANNEL ⚡️', url='https://t.me/pencemodesigns')              
                 ],[
-                    InlineKeyboardButton('🚶 𝗕𝗮𝗰𝗸 🚶', callback_data='start')
+                    InlineKeyboardButton('BACK 🔙', callback_data='start')
                 ]
                 ]
                 
@@ -333,7 +333,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     )
         elif query.data.startswith("checksub"):
             if AUTH_CHANNEL and not await is_subscribed(client, query):
-                await query.answer("I Like Your Smartness, But Don't Be Oversmart 😒",show_alert=True)
+                await query.answer("I Like Your Smartness, But Don't Be Oversmart 😬😬😬",show_alert=True)
                 return
             ident, file_id = query.data.split("#")
             filedetails = await get_file_details(file_id)
@@ -351,9 +351,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     f_caption = f"{title}"
                 buttons = [
                 [                
-                    InlineKeyboardButton('𝙼𝚆 𝚄𝙿𝙳𝙰𝚃𝙴𝚂', url='https://t.me/+veUIdIW2CQ5mOGU5')                               
+                    InlineKeyboardButton('CHANNEL ⚡️', url='https://t.me/pencemodesigns')                               
                 ],[
-                    InlineKeyboardButton('🚶 𝗕𝗮𝗰𝗸 🚶', callback_data='start')
+                    InlineKeyboardButton('BACK 🔙', callback_data='start')
                 ]
                 ]
                 
@@ -376,4 +376,4 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 await query.message.delete()
                 
     else:
-        await query.answer("𝙽𝙾𝚃 𝙵𝙾𝚁 𝚈𝙾𝚄 𝙱𝚄𝙳𝙳𝚈",show_alert=True)
+        await query.answer("Its Not For You...",show_alert=True)
