@@ -8,46 +8,6 @@ from pyrogram.errors import UserNotParticipant
 logger = logging.getLogger(__name__)
 
 
-
-HELP_TEXT = """**⭕️ How to search here 🔍**\n\n**🔘 With tag**\nEx (banner, poster, template etc... )\n\n**🔘 With exact file name**\n\nOnly files from freepik, Envato elements, Vecteezy\n\n**🔘 With file ID**
-Without any tag\n\n⭕️ **Available Commands :**\n\n/start : Checking bot online \n/help : For more help\n/about : more about me\n/search : search files\n\n©️ @pencemodesigns
-"""
-
-ABOUT_TEXT = """--**About Me 😎**--\n\n🤖 **Name :** [Free GFX](https://telegram.me/{})\n\n👨‍💻 **Developer :** [α̅η̲ɗɾo͚ȋɗ കുഞ്ഞപ്പൻ](https://github.com/mnmsby)\n\n📢 **Channel :** [Pencemo Design](https://telegram.me/pencemodesign)\n\n👥 **Group :** [Pencemo Designs](https://telegram.me/pencemodesigns)"""
-
-HELP_BUTTONS = InlineKeyboardMarkup(
-        [[
-        InlineKeyboardButton('📝 About', callback_data='about_btn'),
-        InlineKeyboardButton('Back 🔙', callback_data='start_btn')
-        ],[
-        InlineKeyboardButton("SEARCH HERE 🔍", switch_inline_query_current_chat='')
-        ]]
-    )
-
-ABOUT_BUTTONS = InlineKeyboardMarkup(
-        [[
-        InlineKeyboardButton('🏠 Home', callback_data='start_btn'),
-        InlineKeyboardButton("⚜️ Youtube ⚜️", url="http://youtube.com/c/pencemodesigns")
-        ],[
-        InlineKeyboardButton("⚡️ GROUP ⚡️", url="https://t.me/free_graphics_download")
-        ]]
-    )
-
-START_BUTTONS = InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton("⚡️ GROUP", url="https://t.me/free_graphics_download")
-                    ],
-                    [
-                        InlineKeyboardButton("🔖 CHANNEL 🔖", url="https://t.me/pencemodesigns")
-                    ],
-                    [
-                        InlineKeyboardButton("SEARCH HERE 🔍", switch_inline_query_current_chat='')
-                    ]
-                ]
-            )
-
-
 @Client.on_message(filters.command("start"))
 async def start(bot, cmd):
     usr_cmdall1 = cmd.text
@@ -236,8 +196,14 @@ async def delete(bot, message):
         
 @Client.on_message(filters.command('help'))
 async def bot_info(bot, message):
-    buttons = HELP_BUTTONS
-    await message.reply(text=HELP_TEXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
+    buttons = [
+        [
+            InlineKeyboardButton("SEARCH HERE 🔍", switch_inline_query_current_chat='')          
+        ],[
+            InlineKeyboardButton('JOIN HERE ⚡️', url='https://t.me/pencemodesigns')
+        ]
+        ]
+    await message.reply(text='**⭕️ How to search here 🔍**\n\n**🔘 With tag**\nEx (banner, poster, template etc... )\n\n**🔘 With exact file name**\n\nOnly files from freepik, Envato elements, Vecteezy\n\n**🔘 With file ID**Without any tag\n\n⭕️ **Available Commands :**\n\n/start : Checking bot online \n/help : For more help\n/about : more about me\n/search : search files\n\n©️ @pencemodesigns', reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
 
 
 @Client.on_message(filters.command('about'))
