@@ -27,18 +27,19 @@ HELP_BUTTONS = InlineKeyboardMarkup(
 ABOUT_BUTTONS = InlineKeyboardMarkup(
         [[
         InlineKeyboardButton('🏠 Home', callback_data='start_btn'),
-        InlineKeyboardButton('Help 🔧', callback_data='help_btn')
+        InlineKeyboardButton("⚜️ Youtube ⚜️", url="http://youtube.com/c/pencemodesigns")
         ],[
-        InlineKeyboardButton("⚡️ GROUP", url="https://t.me/free_graphics_download"),
-        InlineKeyboardButton('Close ❌', callback_data='close_btn')
+        InlineKeyboardButton("⚡️ GROUP ⚡️", url="https://t.me/free_graphics_download")
         ]]
     )
 
 START_BUTTONS = InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("⚡️ GROUP", url="https://t.me/free_graphics_download"),
-                        InlineKeyboardButton("HELP 🔧", callback_data="help_btn")
+                        InlineKeyboardButton("⚡️ GROUP", url="https://t.me/free_graphics_download")
+                    ],
+                    [
+                        InlineKeyboardButton("🔖 CHANNEL 🔖", url="https://t.me/pencemodesigns")
                     ],
                     [
                         InlineKeyboardButton("SEARCH HERE 🔍", switch_inline_query_current_chat='')
@@ -107,8 +108,6 @@ async def start(bot, cmd):
                 buttons = [
                     [                
                         InlineKeyboardButton('💥 CHANNEL 💥', url='https://t.me/+XrXE3qJbZRM1MWJl')
-                    ],[
-                        InlineKeyboardButton("SEARCH 🔍", switch_inline_query_current_chat='')
                     ]
                     ]
                 await bot.send_cached_media(
@@ -140,8 +139,10 @@ async def start(bot, cmd):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("⚡️ GROUP", url="https://t.me/free_graphics_download"),
-                        InlineKeyboardButton("HELP 🔧", callback_data="help_btn")
+                        InlineKeyboardButton("⚡️ GROUP ⚡️", url="https://t.me/free_graphics_download")
+                    ],
+                    [
+                        InlineKeyboardButton("🔖 CHANNEL 🔖", url="https://t.me/pencemodesigns")
                     ],
                     [
                         InlineKeyboardButton("SEARCH HERE 🔍", switch_inline_query_current_chat='')
@@ -202,31 +203,7 @@ async def log_file(bot, message):
         await message.reply(str(e))
 
 
-#add start messeg 
 
-@Client.on_callback_query(filters.regex(r'^start_btn$'))
-async def help_start_button(cb: CallbackQuery):
-    await cb.answer()
-    await cb.message.edit(START_MSG, reply_markup=START_BUTTONS)
-
-
-@Client.on_callback_query(filters.regex(r'^close_btn$'))
-async def close_button(cb: CallbackQuery):
-    await cb.message.delete()
-
-
-
-@Client.on_callback_query(filters.regex(r'^help_btn$'))
-async def help_text_button(cb: CallbackQuery):
-    await cb.answer()
-    await cb.message.edit(HELP_TEXT, reply_markup=HELP_BUTTONS)
-
-@Client.on_callback_query(filters.regex(r'^about_btn$'))
-async def help_about_button(cb: CallbackQuery):
-    await cb.answer()
-    await cb.message.edit(ABOUT_TEXT, reply_markup=ABOUT_BUTTONS, disable_web_page_preview=True)
-    
-    
  
 @Client.on_message(filters.command('delete') & filters.user(ADMINS))
 async def delete(bot, message):
@@ -256,7 +233,17 @@ async def delete(bot, message):
     else:
         await msg.edit('File not found in database')
 
+        
+@Client.on_message(filters.command('help'))
+async def bot_info(bot, message):
+    buttons = HELP_BUTTONS
+    await message.reply(text=HELP_TEXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
 
+
+@Client.on_message(filters.command('about'))
+async def bot_info(bot, message):
+    buttons = ABOUT_BUTTONS
+    await message.reply(text=ABOUT_TEXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
 
 @Client.on_message(filters.command('search'))
 async def bot_info(bot, message):
