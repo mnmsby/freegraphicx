@@ -205,24 +205,24 @@ async def log_file(bot, message):
 #add start messeg 
 
 @Client.on_callback_query(filters.regex(r'^start_btn$'))
-async def help_start_button(c: Bot, cb: CallbackQuery):
+async def help_start_button(cb: CallbackQuery):
     await cb.answer()
     await cb.message.edit(START_MSG, reply_markup=START_BUTTONS)
 
 
 @Client.on_callback_query(filters.regex(r'^close_btn$'))
-async def close_button(c: Bot, cb: CallbackQuery):
+async def close_button(cb: CallbackQuery):
     await cb.message.delete()
 
 
 
 @Client.on_callback_query(filters.regex(r'^help_btn$'))
-async def help_text_button(c: Bot, cb: CallbackQuery):
+async def help_text_button(cb: CallbackQuery):
     await cb.answer()
     await cb.message.edit(HELP_TEXT, reply_markup=HELP_BUTTONS)
 
 @Client.on_callback_query(filters.regex(r'^about_btn$'))
-async def help_about_button(c: Bot, cb: CallbackQuery):
+async def help_about_button(cb: CallbackQuery):
     await cb.answer()
     await cb.message.edit(ABOUT_TEXT, reply_markup=ABOUT_BUTTONS, disable_web_page_preview=True)
     
