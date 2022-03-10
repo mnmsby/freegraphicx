@@ -7,95 +7,18 @@ from utils import Media, get_file_details, get_size
 from pyrogram.errors import UserNotParticipant
 logger = logging.getLogger(__name__)
 
-class Database:
-    def __init__(self, url, database_name):
-        self._client = motor.motor_asyncio.AsyncIOMotorClient(url)
-        self.db = self._client[database_name]
-        self.col = self.db.users
-        self.cache = {}
-    
-    def new_user(self, id):
-        return {"id": id, "language": "en"}
-    
-    async def add_user(self, id):
-        user = self.new_user(id)
-        await self.col.insert_one(user)
-    
-    async def get_user(self, id):
-        user = self.cache.get(id)
-        if user is not None:
-            return user
-        
-        user = await self.col.find_one({"id": int(id)})
-        self.cache[id] = user
-        return user
-    
-    async def is_user_exist(self, id):
-        user = await self.col.find_one({'id': int(id)})
-        return True if user else False
-    
-    async def total_users_count(self):
-        count = await self.col.count_documents({})
-        return count
-    
-    async def get_all_users(self):
-        all_users = self.col.find({})
-        return all_users
-    
-    async def delete_user(self, user_id):
-        await self.col.delete_many({'id': int(user_id)})
-    
-    async def get_lang(self, id):
-        user = await self.col.find_one({'id': int(id)})
-        if user:
-            return user.get("language", "en")
-        else:
-            return "en"
-
-    async def update_lang(self, id, language):
-        await self.col.update_one(
-            {"id": id}, {"$set": {"language": language}}
-        )
 
 
-DATABASE = os.environ.get("DATABASE")
-db = Database(DATABASE)
-
-HELP_TEXT = """**⭕️ How to search here 🔍**
-
-**🔘 With tag**
-Ex (banner, poster, template etc... )
-
-**🔘 With exact file name**
-Only files from freepik, Envato elements, Vecteezy
-
-**🔘 With file ID**
-Without any tag
-
-⭕️ **Available Commands :**
-
-/start : Checking bot online 
-/help : For more help
-/about : more about me
-/search : search files
-
-©️ @pencemodesigns
+HELP_TEXT = """**⭕️ How to search here 🔍**\n\n**🔘 With tag**\nEx (banner, poster, template etc... )\n\n**🔘 With exact file name**\n\nOnly files from freepik, Envato elements, Vecteezy\n\n**🔘 With file ID**
+Without any tag\n\n⭕️ **Available Commands :**\n\n/start : Checking bot online \n/help : For more help\n/about : more about me\n/search : search files\n\n©️ @pencemodesigns
 """
 
-ABOUT_TEXT = """--**About Me 😎**--
-
-🤖 **Name :** [Free GFX](https://telegram.me/{})
-
-👨‍💻 **Developer :** [α̅η̲ɗɾo͚ȋɗ കുഞ്ഞപ്പൻ](https://github.com/mnmsby)
-
-📢 **Channel :** [Pencemo Design](https://telegram.me/pencemodesign)
-
-👥 **Group :** [Pencemo Designs](https://telegram.me/pencemodesigns)"""
+ABOUT_TEXT = """--**About Me 😎**--\n\n🤖 **Name :** [Free GFX](https://telegram.me/{})\n\n👨‍💻 **Developer :** [α̅η̲ɗɾo͚ȋɗ കുഞ്ഞപ്പൻ](https://github.com/mnmsby)\n\n📢 **Channel :** [Pencemo Design](https://telegram.me/pencemodesign)\n\n👥 **Group :** [Pencemo Designs](https://telegram.me/pencemodesigns)"""
 
 HELP_BUTTONS = InlineKeyboardMarkup(
         [[
-        InlineKeyboardButton('📝 About', callback_data='about'),
-        InlineKeyboardButton('Back 🔙', callback_data='home')
+        InlineKeyboardButton('📝 About', callback_data='about_btn'),
+        InlineKeyboardButton('Back 🔙', callback_data='start_btn')
         ],[
         InlineKeyboardButton("SEARCH HERE 🔍", switch_inline_query_current_chat='')
         ]]
@@ -103,24 +26,26 @@ HELP_BUTTONS = InlineKeyboardMarkup(
 
 ABOUT_BUTTONS = InlineKeyboardMarkup(
         [[
-        InlineKeyboardButton('🏠 Home', callback_data='home'),
-        InlineKeyboardButton('Help 🔧', callback_data='help')
+        InlineKeyboardButton('🏠 Home', callback_data='start_btn'),
+        InlineKeyboardButton('Help 🔧', callback_data='help_btn')
         ],[
-        InlineKeyboardButton("GROUP ⚡️", url="https://t.me/free_graphics_download")
+        InlineKeyboardButton("⚡️ GROUP", url="https://t.me/free_graphics_download"),
+        InlineKeyboardButton('Close ❌', callback_data='close_btn')
         ]]
     )
 
 START_BUTTONS = InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("GROUP ⚡️", url="https://t.me/free_graphics_download"),
-                        InlineKeyboardButton("HELP 🔧", callback_data="help")
+                        InlineKeyboardButton("⚡️ GROUP", url="https://t.me/free_graphics_download"),
+                        InlineKeyboardButton("HELP 🔧", callback_data="help_btn")
                     ],
                     [
                         InlineKeyboardButton("SEARCH HERE 🔍", switch_inline_query_current_chat='')
                     ]
                 ]
             )
+
 
 @Client.on_message(filters.command("start"))
 async def start(bot, cmd):
@@ -183,7 +108,7 @@ async def start(bot, cmd):
                     [                
                         InlineKeyboardButton('💥 CHANNEL 💥', url='https://t.me/+XrXE3qJbZRM1MWJl')
                     ],[
-                        InlineKeyboardButton("SEARCH AGAIN 🔍", switch_inline_query_current_chat='')
+                        InlineKeyboardButton("SEARCH 🔍", switch_inline_query_current_chat='')
                     ]
                     ]
                 await bot.send_cached_media(
@@ -215,8 +140,8 @@ async def start(bot, cmd):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("GROUP ⚡️", url="https://t.me/free_graphics_download"),
-                        InlineKeyboardButton("HELP 🔧", callback_data="help")
+                        InlineKeyboardButton("⚡️ GROUP", url="https://t.me/free_graphics_download"),
+                        InlineKeyboardButton("HELP 🔧", callback_data="help_btn")
                     ],
                     [
                         InlineKeyboardButton("SEARCH HERE 🔍", switch_inline_query_current_chat='')
@@ -279,30 +204,29 @@ async def log_file(bot, message):
 
 #add start messeg 
 
-@Client.on_callback_query()
-async def cb_data(bot, update):
-    if not await db.is_user_exist(update.from_user.id):
-        await db.add_user(update.from_user.id)
-    if update.data == "home":
-        await update.message.edit_text(
-            text=START_MSG.format(update.from_user.mention),
-            disable_web_page_preview=True,
-            reply_markup=START_BUTTONS
-        )
-    elif update.data == "help":
-        await update.message.edit_text(
-            text=HELP_TEXT,
-            disable_web_page_preview=True,
-            reply_markup=HELP_BUTTONS
-        )
-    elif update.data == "about":
-        await update.message.edit_text(
-            text=ABOUT_TEXT.format((await bot.get_me()).username),
-            disable_web_page_preview=True,
-            reply_markup=ABOUT_BUTTONS
-        )
+@Bot.on_callback_query(filters.regex(r'^start_btn$'))
+async def help_start_button(c: Bot, cb: CallbackQuery):
+    await cb.answer()
+    await cb.message.edit(START_MSG, reply_markup=START_BUTTONS)
 
 
+@Bot.on_callback_query(filters.regex(r'^close_btn$'))
+async def close_button(c: Bot, cb: CallbackQuery):
+    await cb.message.delete()
+
+
+
+@Bot.on_callback_query(filters.regex(r'^help_btn$'))
+async def help_text_button(c: Bot, cb: CallbackQuery):
+    await cb.answer()
+    await cb.message.edit(HELP_TEXT, reply_markup=HELP_BUTTONS)
+
+@Bot.on_callback_query(filters.regex(r'^about_btn$'))
+async def help_about_button(c: Bot, cb: CallbackQuery):
+    await cb.answer()
+    await cb.message.edit(ABOUT_TEXT, reply_markup=ABOUT_BUTTONS, disable_web_page_preview=True)
+    
+    
  
 @Client.on_message(filters.command('delete') & filters.user(ADMINS))
 async def delete(bot, message):
@@ -332,28 +256,7 @@ async def delete(bot, message):
     else:
         await msg.edit('File not found in database')
 
-@Client.on_message(filters.private & filters.command(["help"]))
-async def help(bot, update):
-    if not await db.is_user_exist(update.from_user.id):
-        await db.add_user(update.from_user.id)
-    await update.reply_text(
-        text=HELP_TEXT,
-        disable_web_page_preview=True,
-        reply_markup=HELP_BUTTONS,
-        quote=True
-    )
 
-
-@Client.on_message(filters.private & filters.command(["about"]))
-async def about(bot, update):
-    if not await db.is_user_exist(update.from_user.id):
-        await db.add_user(update.from_user.id)
-    await update.reply_text(
-        text=ABOUT_TEXT.format((await bot.get_me()).username),
-        disable_web_page_preview=True,
-        reply_markup=ABOUT_BUTTONS,
-        quote=True
-    )
 
 @Client.on_message(filters.command('search'))
 async def bot_info(bot, message):
