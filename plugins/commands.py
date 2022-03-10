@@ -7,6 +7,9 @@ from utils import Media, get_file_details, get_size
 from pyrogram.errors import UserNotParticipant
 logger = logging.getLogger(__name__)
 
+DATABASE = os.environ.get("DATABASE")
+db = Database(DATABASE, "FnTranslateBot")
+
 
 HELP_TEXT = """**⭕️ How to search here 🔍**
 
