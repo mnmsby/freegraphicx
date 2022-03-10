@@ -2,13 +2,13 @@ import os
 import logging
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
-from info import START_MSG, CHANNELS, ADMINS, AUTH_CHANNEL, CUSTOM_FILE_CAPTION
+from info import START_MSG, CHANNELS, ADMINS, AUTH_CHANNEL, CUSTOM_FILE_CAPTION, DATABASE_URI
 from utils import Media, get_file_details, get_size
 from pyrogram.errors import UserNotParticipant
 logger = logging.getLogger(__name__)
 
-DATABASE = os.environ.get("DATABASE")
-db = Database(DATABASE, "FnTranslateBot")
+DATABASE = DATABASE_URI
+db = Database(DATABASE)
 
 
 HELP_TEXT = """**⭕️ How to search here 🔍**
