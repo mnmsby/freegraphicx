@@ -3,7 +3,7 @@ import logging
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 from logo import photo
-from info import START_MSG, CHANNELS, ADMINS, AUTH_CHANNEL, CUSTOM_FILE_CAPTION, DATABASE_URI
+from info import START_MSG, CHANNELS, ADMINS, AUTH_CHANNEL, CUSTOM_FILE_CAPTION, DATABASE_URI, PIC
 from utils import Media, get_file_details, get_size
 from pyrogram.errors import UserNotParticipant
 logger = logging.getLogger(__name__)
@@ -94,7 +94,7 @@ async def start(bot, cmd):
         )
     else:
          await cmd.reply_photo(
-            photo,
+            PIC,
             caption=START_MSG,
             parse_mode="Markdown",
             disable_web_page_preview=True,
