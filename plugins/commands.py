@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 
 @Client.on_message(filters.command("start"))
-async def start(bot, cmd):
+async def start(bot, cmd, message):
     usr_cmdall1 = cmd.text
     if usr_cmdall1.startswith("/start subinps"):
         if AUTH_CHANNEL:
@@ -92,7 +92,7 @@ async def start(bot, cmd):
             )
         )
     else:
-         await self._client.send_photo(
+         await message.reply_photo(
             photo=PIC,
             caption=START_MSG,
             parse_mode="Markdown",
