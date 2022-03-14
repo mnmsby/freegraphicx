@@ -2,7 +2,6 @@ import os
 import logging
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
-from logo import photo
 from info import START_MSG, CHANNELS, ADMINS, AUTH_CHANNEL, CUSTOM_FILE_CAPTION, DATABASE_URI, PIC
 from utils import Media, get_file_details, get_size
 from pyrogram.errors import UserNotParticipant
