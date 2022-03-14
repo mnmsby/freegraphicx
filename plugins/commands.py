@@ -92,7 +92,7 @@ async def start(bot, cmd):
             )
         )
     else:
-         await cmd.reply_photo(
+         await self._client.send_photo(
             photo=PIC,
             caption=START_MSG,
             parse_mode="Markdown",
