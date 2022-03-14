@@ -93,7 +93,7 @@ async def start(bot, cmd):
         )
     else:
          await cmd.reply_photo(
-            PIC,
+            photo=random.choice(PIC),
             caption=START_MSG,
             parse_mode="Markdown",
             reply_markup=InlineKeyboardMarkup(
