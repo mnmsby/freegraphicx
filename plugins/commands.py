@@ -94,7 +94,7 @@ async def start(bot, cmd):
         )
     else:
          await cmd.reply_photo(
-            https://telegra.ph/file/02d92bee24891be5cdfb8.jpg,
+            logo-pencemo-2.jpg,
             caption=START_MSG,
             parse_mode="Markdown",
             disable_web_page_preview=True,
