@@ -2,7 +2,7 @@ import os
 import logging
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
-from logo import logo-pencemo-2.jpg
+from logo import photo
 from info import START_MSG, CHANNELS, ADMINS, AUTH_CHANNEL, CUSTOM_FILE_CAPTION, DATABASE_URI
 from utils import Media, get_file_details, get_size
 from pyrogram.errors import UserNotParticipant
@@ -94,7 +94,7 @@ async def start(bot, cmd):
         )
     else:
          await cmd.reply_photo(
-            logo-pencemo-2.jpg,
+            photo,
             caption=START_MSG,
             parse_mode="Markdown",
             disable_web_page_preview=True,
