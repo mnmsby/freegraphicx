@@ -111,7 +111,7 @@ async def start(bot, cmd):
                 ]
             )
         )
-        return
+
 
 
 
