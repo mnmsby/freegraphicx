@@ -92,8 +92,9 @@ async def start(bot, cmd):
             )
         )
     else:
-        await cmd.reply_text(  
-            START_MSG,
+         await cmd.reply_photo(
+            https://telegra.ph/file/02d92bee24891be5cdfb8.jpg,
+            caption=START_MSG,
             parse_mode="Markdown",
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -110,6 +111,8 @@ async def start(bot, cmd):
                 ]
             )
         )
+
+
 
 
 @Client.on_message(filters.command('channel') & filters.user(ADMINS))
@@ -194,22 +197,7 @@ async def delete(bot, message):
         await msg.edit('File not found in database')
 
         
-@Client.on_message(filters.command('help'))
-async def bot_info(bot, message):
-    buttons = [
-        [
-            InlineKeyboardButton("SEARCH HERE 🔍", switch_inline_query_current_chat='')          
-        ],[
-            InlineKeyboardButton('JOIN HERE ⚡️', url='https://t.me/pencemodesigns')
-        ]
-        ]
-    await message.reply(text='aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa aaaaaaaaa', reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
 
-
-@Client.on_message(filters.command('about'))
-async def bot_info(bot, message):
-    buttons = ABOUT_BUTTONS
-    await message.reply(text=ABOUT_TEXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
 
 @Client.on_message(filters.command('search'))
 async def bot_info(bot, message):
