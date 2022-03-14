@@ -111,7 +111,7 @@ async def start(bot, cmd):
                 ]
             )
         )
-
+        return
 
 
 
@@ -197,7 +197,18 @@ async def delete(bot, message):
         await msg.edit('File not found in database')
 
         
-
+@Client.on_message(filters.command('about'))
+async def bot_info(bot, message):
+    buttons = [
+        [
+            InlineKeyboardButton("SEARCH HERE 🔍", switch_inline_query_current_chat='')          
+        ],[
+            InlineKeyboardButton('JOIN HERE ⚡️', url='https://t.me/pencemodesigns')
+        ]
+        ]
+    await message.reply(text="""hallo 👇, or send file name or ID here 
+""", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
+        
 
 @Client.on_message(filters.command('search'))
 async def bot_info(bot, message):
