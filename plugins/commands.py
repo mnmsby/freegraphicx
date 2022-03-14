@@ -93,7 +93,7 @@ async def start(bot, cmd):
         )
     else:
          await cmd.reply_photo(
-            photo=PICS,
+            photo=PIC,
             caption=START_MSG,
             parse_mode="Markdown",
             disable_web_page_preview=True,
